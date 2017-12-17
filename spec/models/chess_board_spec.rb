@@ -32,4 +32,10 @@ describe ChessBoard do
       expect(@chess_board.join_position_to_char(8, 1)).to eq('H1')
     end
   end
+
+  context 'class methods' do
+    it 'checks whether the given character denoting a position is valid' do
+      expect(ChessBoard.is_valid_position('H1')).to eq(true)
+    end
+  end
 end

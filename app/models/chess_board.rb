@@ -7,10 +7,12 @@ class ChessBoard
     @knight_position = knight_position
   end
 
-  def save
-    x, y = split_char_to_position(knight_position)
+  def self.find(board_id)
+    redis_conn.get(board_id)
+  end
 
-    if move_within_board(x, y)
+  def save
+    if ChessBoard.is_valid_position(knight_position)
       ChessBoard.redis_conn.set(board_id, knight_position)
 
       { status: 'OK', board_id: board_id }
@@ -36,6 +38,13 @@ class ChessBoard
 
   def join_position_to_char(x, y)
     "#{char_index_mapping.key(x)}#{y}"
+  end
+
+  def self.is_valid_position(char)
+    chess_board = ChessBoard.new(char)
+    position = chess_board.split_char_to_position(char)
+
+    chess_board.move_within_board(*position)
   end
 
   private

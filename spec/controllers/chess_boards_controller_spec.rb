@@ -9,7 +9,7 @@ describe ChessBoardsController, type: :controller do
     it 'returns failure response, if invalid knight position is passed' do
       response = post(:create, params: { knight_position: 'T1' })
 
-      expect(JSON.parse(response.body)['status']).to eq('FAIL')
+      expect(JSON.parse(response.body)['message']).to eq('Invalid Knight Position')
     end
   end
 end
