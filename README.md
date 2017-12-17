@@ -1,24 +1,28 @@
-# README
+# Shortest Knight moves
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Given a board setup up with initial knight position and destination, it finds the shortest path (minimum number of steps) for the knight to another position (destination) on the board.
 
-Things you may want to cover:
+# Setup
+`$ bundle install` <br>
+`$ rails s`
 
-* Ruby version
+`* All responses from the app are JSON encoded`
 
-* System dependencies
+# Run
+<strong>url: `<app_url>/chess_boards` <br>
+method: `POST` <br>
+params: `{ knight_position: 'H1'}`
+</strong>
 
-* Configuration
+You will get `board_id` as response. With that `board_id` call,
 
-* Database creation
+<strong>url: `<app_url>/knights/get_shortest_path` <br>
+method: `GET` <br>
+params: `{ board_id: '<board_id>', destination: 'G2' }`
+</strong>
+  
+The response will contain the `shortest_path`.
 
-* Database initialization
+# Test
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+`$ rpsec`
