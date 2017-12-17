@@ -10,7 +10,6 @@ describe ChessBoard do
       response = ChessBoard.new('X1').save
 
       expect(response[:status]).to eq('FAIL')
-
     end
   end
 
@@ -27,6 +26,10 @@ describe ChessBoard do
 
     it 'checks whether the move is within chess board' do
       expect(@chess_board.move_within_board(8, 1)).to eq(true)
+    end
+
+    it 'joins the chess board position to characters' do
+      expect(@chess_board.join_position_to_char(8, 1)).to eq('H1')
     end
   end
 end

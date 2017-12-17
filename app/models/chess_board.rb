@@ -34,6 +34,10 @@ class ChessBoard
     BOARD_SIZE.include?(x) && BOARD_SIZE.include?(y)
   end
 
+  def join_position_to_char(x, y)
+    "#{char_index_mapping.key(x)}#{y}"
+  end
+
   private
   # Establish Redis connection
   def self.redis_conn
